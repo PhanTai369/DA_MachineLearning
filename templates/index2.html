@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự đoán Thu nhập</title>
+</head>
+<body>
+    <h1>Dự đoán Thu nhập của bạn</h1>
+    <form action="/predict" method="post">
+        <label for="age">Tuổi:</label>
+        <input type="number" name="age" required><br>
+
+        <label for="workclass">Loại công việc:</label>
+        <input type="text" name="workclass" required><br>
+
+        <label for="fnlwgt">FNLWGT:</label>
+        <input type="number" name="fnlwgt" required><br>
+
+        <label for="education">Giáo dục:</label>
+        <input type="text" name="education" required><br>
+
+        <label for="education-num">Giáo dục (số):</label>
+        <input type="number" name="education-num" required><br>
+
+        <label for="marital-status">Tình trạng hôn nhân:</label>
+        <input type="text" name="marital-status" required><br>
+
+        <label for="occupation">Nghề nghiệp:</label>
+        <input type="text" name="occupation" required><br>
+
+        <label for="relationship">Mối quan hệ:</label>
+        <input type="text" name="relationship" required><br>
+
+        <label for="race">Chủng tộc:</label>
+        <input type="text" name="race" required><br>
+
+        <label for="sex">Giới tính:</label>
+        <input type="text" name="sex" required><br>
+
+        <label for="capital-gain">Lợi nhuận vốn:</label>
+        <input type="number" name="capital-gain" required><br>
+
+        <label for="capital-loss">Thua lỗ vốn:</label>
+        <input type="number" name="capital-loss" required><br>
+
+        <label for="hours-per-week">Giờ làm việc mỗi tuần:</label>
+        <input type="number" name="hours-per-week" required><br>
+
+        <label for="native-country">Quốc gia:</label>
+        <input type="text" name="native-country" required><br>
+
+        <input type="submit" value="Dự đoán">
+    </form>
+
+    {% if prediction %}
+        <h2>Kết quả: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>

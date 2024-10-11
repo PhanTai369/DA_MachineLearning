@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Dữ Liệu Dự Đoán</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.lovepik.com/photo/40142/9205.jpg_wh860.jpg'); /* Đường dẫn đến ảnh của bạn */
+            background-size: cover; /* Hình nền bao phủ toàn bộ trang */
+            background-repeat: no-repeat; /* Không lặp lại hình nền */
+            background-position: center center; /* Căn giữa hình nền */
+            background-attachment: fixed; /* Hình nền cố định khi cuộn trang */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white; /* Chỉnh màu chữ thành màu đen */
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border: 1px solid #007BFF;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            display: none;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nhập Dữ Liệu Dự Đoán</h1>
+    <form id="predictionForm" action="/predict" method="post">
+        <div class="error" id="error"></div>
+        
+        <label for="age">Tuổi:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="workclass">Lớp công việc:</label>
+        <input type="text" id="workclass" name="workclass" required>
+
+        <label for="fnlwgt">Fnlwgt:</label>
+        <input type="number" id="fnlwgt" name="fnlwgt" required>
+
+        <label for="education">Giáo dục:</label>
+        <input type="text" id="education" name="education" required>
+
+        <label for="education_num">Số năm học:</label>
+        <input type="number" id="education_num" name="education_num" required>
+
+        <label for="marital_status">Tình trạng hôn nhân:</label>
+        <input type="text" id="marital_status" name="marital_status" required>
+
+        <label for="occupation">Nghề nghiệp:</label>
+        <input type="text" id="occupation" name="occupation" required>
+
+        <label for="relationship">Mối quan hệ:</label>
+        <input type="text" id="relationship" name="relationship" required>
+
+        <label for="race">Chủng tộc:</label>
+        <input type="text" id="race" name="race" required>
+
+        <label for="sex">Giới tính:</label>
+        <input type="text" id="sex" name="sex" required>
+
+        <label for="capital_gain">Lợi nhuận vốn:</label>
+        <input type="number" id="capital_gain" name="capital_gain" required>
+
+        <label for="capital_loss">Lỗ vốn:</label>
+        <input type="number" id="capital_loss" name="capital_loss" required>
+
+        <label for="hours_per_week">Số giờ làm việc mỗi tuần:</label>
+        <input type="number" id="hours_per_week" name="hours_per_week" required>
+
+        <label for="native_country">Quốc gia gốc:</label>
+        <input type="text" id="native_country" name="native_country" required>
+
+        <input type="submit" value="Dự Đoán">
+    </form>
+
+    <script>
+        document.getElementById("predictionForm").onsubmit = function(event) {
+            let error = document.getElementById("error");
+            error.style.display = "none"; // Ẩn thông báo lỗi
+
+            // Kiểm tra dữ liệu nhập
+            let age = document.getElementById("age").value;
+            if (age < 0 || age > 120) {
+                error.innerText = "Tuổi phải nằm trong khoảng 0 đến 120.";
+                error.style.display = "block"; // Hiện thông báo lỗi
+                event.preventDefault(); // Ngăn chặn gửi form
+                return;
+            }
+
+            // Có thể thêm các kiểm tra khác tại đây
+        }
+    </script>
+</body>
+</html>
